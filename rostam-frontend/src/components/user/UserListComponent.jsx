@@ -10,6 +10,8 @@ class UserListComponent extends Component {
             userList: []
          }
          this.createUser = this.createUser.bind(this);
+         this.updateUser = this.updateUser.bind(this);
+         this.deleteUser = this.deleteUser.bind(this);
     }
 
     componentDidMount() {
@@ -18,6 +20,17 @@ class UserListComponent extends Component {
             this.setState( {userList: response.data} );
             }
         );
+    }
+
+    deleteUser(userId) {
+        UserService.deleteUser(userId).then( response => {
+            this.setState( { userList: this.state.userList.filter(user => user.userId !== userId) } );
+            } 
+        );
+    }
+
+    updateUser(userId) {
+        this.props.history.push('/updateUser/'+ userId);
     }
 
     createUser() {
@@ -35,9 +48,12 @@ class UserListComponent extends Component {
                         <table className="table table-striped table-bordered">
                             <thead>
                                 <tr>
+                                    <th>User ID</th>
                                     <th>Username</th>
                                     <th>Password</th>
                                     <th>Status</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                                 <tbody>
@@ -45,9 +61,16 @@ class UserListComponent extends Component {
                                         this.state.userList.map(
                                             user => 
                                             <tr key={user.userId}>
+                                                    <td>{user.userId}</td>
                                                     <td>{user.username}</td>
                                                     <td>{user.password}</td>
                                                     <td>{user.status}</td>
+                                                    <td>
+                                                        <button onClick={ () => this.updateUser(user.userId) } className="btn btn-info" >Update</button>
+                                                    </td>
+                                                    <td>
+                                                        <button onClick={ () => this.deleteUser(user.userId) } className="btn btn-danger" >Delete</button>
+                                                    </td>
                                             </tr>
                                         )
                                     }

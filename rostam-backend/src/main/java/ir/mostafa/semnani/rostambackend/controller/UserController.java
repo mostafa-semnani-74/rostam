@@ -51,7 +51,7 @@ public class UserController {
                 .orElseThrow(() -> new ResourceNotFoundException("user not exist with id :" + id) );
 
         user.setStatus(0);
-        userDA.save(user);
+        userDA.deleteById(id);
 
         Map<String , Boolean> responseMap = new HashMap<>();
         responseMap.put("deleted", Boolean.TRUE);

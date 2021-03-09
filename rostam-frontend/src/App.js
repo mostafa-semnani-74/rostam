@@ -6,6 +6,7 @@ import HeaderComponent from './components/common/HeaderComponent';
 import FooterComponent from './components/common/FooterComponent';
 import {BrowserRouter as Router , Route , Switch} from 'react-router-dom'
 import CreateUserComponent from './components/user/CreateUserComponent';
+import UpdateUserComponent from './components/user/UpdateUserComponent';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
                     <Switch>
                           <Route path="/" exact component = {UserListComponent}></Route>
                           <Route path="/createUser" component = {CreateUserComponent}></Route>
+                          <Route path="/updateUser/:userId" component = {UpdateUserComponent}></Route>
                     </Switch>
                 <FooterComponent></FooterComponent>
             </div>

@@ -1,18 +1,26 @@
-
 import React, { Component } from 'react';
 import UserService from '../../services/UserService';
 
-class CreateUserComponent extends Component {
+class UpdateUserComponent extends Component {
     constructor(props) {
         super(props);
         this.state = { 
+                    userId: this.props.match.params.userId,
                     username: "",
                     password: ""  
          }
          this.changeUsernameHandler = this.changeUsernameHandler.bind(this);
          this.changePasswordHandler = this.changePasswordHandler.bind(this);
-         this.createUser = this.createUser.bind(this);
+         this.updateUser = this.updateUser.bind(this);
          this.cancel = this.cancel.bind(this);
+    }
+
+    componentDidMount() {
+        UserService.getUserById(this.state.userId).then( (response) => {
+            let user = response.data;
+            this.setState( {username: user.username, password: user.password } );
+            }
+        );
     }
 
     changeUsernameHandler = (event) => {
@@ -22,12 +30,13 @@ class CreateUserComponent extends Component {
         this.setState( {password: event.target.value} )
     }
 
-    createUser = (event) => {
+    updateUser = (event) => {
         event.preventDefault();
         let user = {username: this.state.username, password: this.state.password};
-        UserService.createUser(user).then( response => {
+        
+        UserService.updateUser(user , this.state.userId).then( (response) => {
             this.props.history.push('/');
-            } 
+            }
         );
     }
 
@@ -41,7 +50,7 @@ class CreateUserComponent extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="card-col-md-6 offset-md-3">
-                            <h3 className="text-center">Create User</h3>
+                            <h3 className="text-center">Update User</h3>
                             <div className="card-body">
                                 <form>
                                     <div className="form-group">
@@ -56,7 +65,7 @@ class CreateUserComponent extends Component {
                                             value={this.state.password} onChange={this.changePasswordHandler}>
                                             </input>
                                     </div>
-                                    <button className="btn btn-success" onClick={this.createUser}>create</button>
+                                    <button className="btn btn-success" onClick={this.updateUser}>Update</button>
                                     <button className="btn btn-danger" onClick={this.cancel}>cancel</button>
 
                                 </form>
@@ -69,4 +78,4 @@ class CreateUserComponent extends Component {
     }
 }
  
-export default CreateUserComponent;
+export default UpdateUserComponent;
