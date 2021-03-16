@@ -36,21 +36,13 @@ public class UserController {
 
     @PutMapping("/rest/user/{id}")
     ResponseEntity<User> restUpdateUser(@RequestBody User user, @PathVariable Long id) {
-        User userForUpdate = userService.findById(id);
-
-        userForUpdate.setUsername(user.getUsername());
-        userForUpdate.setPassword(user.getPassword());
-        userForUpdate.setStatus(user.getStatus());
-
-        userService.create(userForUpdate);
+        User userForUpdate = userService.update(user , id);
         return ResponseEntity.ok(userForUpdate);
     }
 
     @DeleteMapping("/rest/user/{id}")
     ResponseEntity<Map<String , Boolean>> restDeleteUser(@PathVariable Long id) {
-        User user = userService.findById(id);
-
-//        user.setStatus(0);
+        userService.findById(id);
         userService.delete(id);
 
         Map<String , Boolean> responseMap = new HashMap<>();

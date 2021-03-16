@@ -19,8 +19,16 @@ public class UserService {
     @Transactional
     public void delete(Long id) { userDA.deleteById(id); }
     @Transactional
-    public void update(User customer) {
+    public User update(User user , Long id) {
+        User userForUpdate = userDA.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("user not exist with id :" + id) );
 
+        userForUpdate.setUsername(user.getUsername());
+        userForUpdate.setPassword(user.getPassword());
+        userForUpdate.setStatus(user.getStatus());
+
+        userDA.save(userForUpdate);
+        return userForUpdate;
     }
 
     public List<User> findAll() { return userDA.findAll(); }
