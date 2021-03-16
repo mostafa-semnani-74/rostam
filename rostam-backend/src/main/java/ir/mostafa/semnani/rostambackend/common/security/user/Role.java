@@ -1,4 +1,4 @@
-package ir.mostafa.semnani.rostambackend.model.entity;
+package ir.mostafa.semnani.rostambackend.common.security.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

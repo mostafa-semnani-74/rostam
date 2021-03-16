@@ -26,13 +26,13 @@ class CreateUserComponent extends Component {
         event.preventDefault();
         let user = {username: this.state.username, password: this.state.password};
         UserService.createUser(user).then( response => {
-            this.props.history.push('/');
+            this.props.history.push('/admin');
             } 
         );
     }
 
     cancel() {
-        this.props.history.push('/');
+        this.props.history.push('/admin');
     }
 
     render() { 

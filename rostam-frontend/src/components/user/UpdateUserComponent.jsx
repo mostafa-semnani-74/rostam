@@ -35,13 +35,13 @@ class UpdateUserComponent extends Component {
         let user = {username: this.state.username, password: this.state.password};
         
         UserService.updateUser(user , this.state.userId).then( (response) => {
-            this.props.history.push('/');
+            this.props.history.push('/admin');
             }
         );
     }
 
     cancel() {
-        this.props.history.push('/');
+        this.props.history.push('/admin');
     }
 
     render() { 
