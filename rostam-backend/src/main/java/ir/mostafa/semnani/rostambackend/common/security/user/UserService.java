@@ -34,4 +34,7 @@ public class UserService {
     public List<User> findAll() { return userDA.findAll(); }
     public User findById(Long id) { return userDA.findById(id)
             .orElseThrow(() -> new UserNotFoundException("user not exist with id :" + id) ); }
+
+    public User findByUsername(String username) { return userDA.getByUsername(username); }
+
 }

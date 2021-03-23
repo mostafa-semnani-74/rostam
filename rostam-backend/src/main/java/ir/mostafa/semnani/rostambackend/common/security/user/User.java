@@ -17,7 +17,7 @@ public class User {
     @Column
     private Integer status = 1;
 
-    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Role> userRoles = new HashSet<>();
 
