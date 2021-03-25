@@ -23,5 +23,5 @@ export default {
     deleteUser(userId) {
         return axios.delete(USER_API_BASE_URL + userId);
     }
-
+    
 }

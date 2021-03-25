@@ -3,7 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
+
+
+axios.interceptors.request.use(
+  config => {
+      const token = localStorage.getItem('token');
+      if (token) {
+          config.headers['Authorization'] = 'Bearer ' + token;
+      }
+      return config;
+  },
+  error => {
+      Promise.reject(error)
+  });
 
 ReactDOM.render(
   <React.StrictMode>

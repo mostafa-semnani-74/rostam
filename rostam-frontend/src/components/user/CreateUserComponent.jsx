@@ -15,15 +15,15 @@ class CreateUserComponent extends Component {
          this.cancel = this.cancel.bind(this);
     }
 
-    changeUsernameHandler = (event) => {
-        this.setState( {username: event.target.value} );
+    changeUsernameHandler = (e) => {
+        this.setState( {username: e.target.value} );
     }
-    changePasswordHandler = (event) => {
-        this.setState( {password: event.target.value} )
+    changePasswordHandler = (e) => {
+        this.setState( {password: e.target.value} )
     }
 
-    createUser = (event) => {
-        event.preventDefault();
+    createUser = (e) => {
+        e.preventDefault();
         let user = {username: this.state.username, password: this.state.password};
         UserService.createUser(user).then( response => {
             this.props.history.push('/admin');
