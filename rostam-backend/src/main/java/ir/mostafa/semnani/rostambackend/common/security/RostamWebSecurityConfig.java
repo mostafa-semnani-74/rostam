@@ -23,14 +23,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class RostamWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Value("${jwt.get.token.uri}")
+    private String authenticationPath;
+
     @Autowired
     JwtRequestFilter jwtRequestFilter;
     @Autowired
     RostamUserDetailsService rostamUserDetailsService;
-
-    @Value("${jwt.get.token.uri}")
-    private String authenticationPath;
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth

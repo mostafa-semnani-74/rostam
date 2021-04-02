@@ -10,9 +10,13 @@ class Home extends Component {
         return (
             <div>
                 <h1>Home Page</h1>
-                <a href="/admin">Admin page</a>
-                <a href="/login">login</a>
-                <a href="/signup">signup</a>
+                <div>
+                    <ul>
+                        <li><a href="/admin">Admin page</a></li>
+                        <li><a href="/login">login</a></li>
+                        <li><a href="/signup">signup</a></li>
+                    </ul>
+                </div>
             </div>
           );
     }
