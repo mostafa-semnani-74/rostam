@@ -4,6 +4,7 @@ import ir.mostafa.semnani.rostambackend.common.security.user.User;
 import ir.mostafa.semnani.rostambackend.common.security.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -20,7 +21,8 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/rest/user")
-    List<User> restFindAllUser() { return userService.findAll(); }
+    List<User> restFindAllUser() {
+        return userService.findAll(); }
 
     @GetMapping("/rest/user/{id}")
     ResponseEntity<User> restGetUserById(@PathVariable Long id) {

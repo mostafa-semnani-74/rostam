@@ -13,7 +13,7 @@ class Login extends Component {
                 password: this.password
         }
         AuthenticationService.loginUser(user).then( (res) => {
-            localStorage.setItem('token', res.data.jwt);
+            localStorage.setItem('token', res.data.token);
             this.props.history.push('/');
         })
     }

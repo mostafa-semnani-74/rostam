@@ -1,6 +1,9 @@
 package ir.mostafa.semnani.rostambackend.common.security.jwt;
 
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +20,11 @@ import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
+    @Value("${jwt.header.string}")
+    public String HEADER_STRING;
+
+    public String TOKEN_PREFIX = "Bearer ";
+
     @Autowired
     RostamUserDetailsService rostamUserDetailsService;
 
@@ -24,34 +32,37 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
-            throws ServletException, IOException {
-
-        final String authorizationHeader = request.getHeader("Authorization");
-
+    protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
+        String header = req.getHeader(HEADER_STRING);
         String username = null;
-        String jwt = null;
-
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            jwt = authorizationHeader.substring(7);
-            username = jwtUtil.extractUsername(jwt);
+        String authToken = null;
+        if (header != null && header.startsWith(TOKEN_PREFIX)) {
+            authToken = header.replace(TOKEN_PREFIX,"");
+            try {
+                username = jwtUtil.getUsernameFromToken(authToken);
+            } catch (IllegalArgumentException e) {
+                logger.error("An error occurred while fetching Username from Token", e);
+            } catch (ExpiredJwtException e) {
+                logger.warn("The token has expired", e);
+            } catch(SignatureException e){
+                logger.error("Authentication Failed. Username or Password not valid.");
+            }
+        } else {
+            logger.warn("Couldn't find bearer string, header will be ignored");
         }
-
-
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-            UserDetails userDetails = this.rostamUserDetailsService.loadUserByUsername(username);
+            UserDetails userDetails = rostamUserDetailsService.loadUserByUsername(username);
 
-            if (jwtUtil.validateToken(jwt, userDetails)) {
-
-                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities());
-                usernamePasswordAuthenticationToken
-                        .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+            if (jwtUtil.validateToken(authToken, userDetails)) {
+                UsernamePasswordAuthenticationToken authentication = jwtUtil.getAuthenticationToken(authToken, SecurityContextHolder.getContext().getAuthentication(), userDetails);
+                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(req));
+                logger.info("authenticated user " + username + ", setting security context");
+                SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
-        chain.doFilter(request, response);
+
+        chain.doFilter(req, res);
     }
 
 }

@@ -4,12 +4,12 @@ package ir.mostafa.semnani.rostambackend.common.security;
 import ir.mostafa.semnani.rostambackend.common.security.jwt.JwtRequestFilter;
 import ir.mostafa.semnani.rostambackend.common.security.jwt.RostamUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -21,10 +21,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class RostamWebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Value("${jwt.get.token.uri}")
-    private String authenticationPath;
 
     @Autowired
     JwtRequestFilter jwtRequestFilter;
@@ -48,6 +46,11 @@ public class RostamWebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+    @Bean
+    public JwtRequestFilter authenticationTokenFilterBean() throws Exception {
+        return new JwtRequestFilter();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(rostamUserDetailsService);
@@ -62,6 +65,7 @@ public class RostamWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/authenticate").permitAll()
+                .antMatchers("/admin/**").hasAuthority("role_admin")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -69,7 +73,7 @@ public class RostamWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         ;
         http
-                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class)
         ;
     }
 
@@ -79,7 +83,7 @@ public class RostamWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers(
                         HttpMethod.POST,
-                        authenticationPath
+                        "/authenticate"
                 )
                 .antMatchers(HttpMethod.OPTIONS, "/**")
         ;
