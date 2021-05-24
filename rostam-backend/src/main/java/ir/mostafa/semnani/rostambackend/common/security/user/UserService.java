@@ -1,6 +1,6 @@
 package ir.mostafa.semnani.rostambackend.common.security.user;
 
-import ir.mostafa.semnani.rostambackend.common.Exception.UserNotFoundException;
+import ir.mostafa.semnani.rostambackend.common.exception.UserNotFoundException;
 import ir.mostafa.semnani.rostambackend.common.security.RostamPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

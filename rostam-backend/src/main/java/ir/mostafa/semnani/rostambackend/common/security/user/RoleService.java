@@ -1,6 +1,6 @@
 package ir.mostafa.semnani.rostambackend.common.security.user;
 
-import ir.mostafa.semnani.rostambackend.common.Exception.RoleNotFoundException;
+import ir.mostafa.semnani.rostambackend.common.exception.RoleNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

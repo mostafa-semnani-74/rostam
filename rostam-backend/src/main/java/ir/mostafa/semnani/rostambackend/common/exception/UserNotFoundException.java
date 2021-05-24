@@ -1,4 +1,4 @@
-package ir.mostafa.semnani.rostambackend.common.Exception;
+package ir.mostafa.semnani.rostambackend.common.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

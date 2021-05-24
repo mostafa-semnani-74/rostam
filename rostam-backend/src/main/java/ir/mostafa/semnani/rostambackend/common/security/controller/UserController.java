@@ -21,29 +21,29 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/rest/user")
-    List<User> restFindAllUser() {
+    List<User> findAllUser() {
         return userService.findAll(); }
 
     @GetMapping("/rest/user/{id}")
-    ResponseEntity<User> restGetUserById(@PathVariable Long id) {
+    ResponseEntity<User> getUserById(@PathVariable Long id) {
         User user = userService.findById(id);
         return ResponseEntity.ok(user);
     }
 
     @PostMapping("/rest/user")
-    ResponseEntity<User> restCreateUser(@RequestBody User user) {
+    ResponseEntity<User> createUser(@RequestBody User user) {
         userService.create(user);
         return ResponseEntity.ok(user);
     }
 
     @PutMapping("/rest/user/{id}")
-    ResponseEntity<User> restUpdateUser(@RequestBody User user, @PathVariable Long id) {
+    ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable Long id) {
         User userForUpdate = userService.update(user , id);
         return ResponseEntity.ok(userForUpdate);
     }
 
     @DeleteMapping("/rest/user/{id}")
-    ResponseEntity<Map<String , Boolean>> restDeleteUser(@PathVariable Long id) {
+    ResponseEntity<Map<String , Boolean>> deleteUser(@PathVariable Long id) {
         userService.findById(id);
         userService.delete(id);
 
