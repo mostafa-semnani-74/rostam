@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -18,6 +19,15 @@ public class ProductController {
     @GetMapping("/findAll")
     public ResponseEntity<List<Product>> findAll() {
         return ResponseEntity.ok(productService.findAll());
+    }
+
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<Product> findById(@PathVariable Long id) {
+        Optional<Product> productOpt = productService.findById(id);
+        if (productOpt.isPresent())
+            return ResponseEntity.ok(productOpt.get());
+        else
+            throw new RuntimeException("product not found with id : " + id);
     }
 
     @PostMapping("/save")
