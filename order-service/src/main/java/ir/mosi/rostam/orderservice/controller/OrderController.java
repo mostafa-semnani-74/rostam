@@ -2,6 +2,7 @@ package ir.mosi.rostam.orderservice.controller;
 
 import ir.mosi.rostam.orderservice.model.entity.Order;
 import ir.mosi.rostam.orderservice.model.service.OrderService;
+import ir.mosi.rostam.orderservice.model.vo.OrderResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,4 +24,11 @@ public class OrderController {
     public ResponseEntity<List<Order>> findAll() {
         return ResponseEntity.ok(orderService.findAll());
     }
+
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<OrderResponse> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(orderService.findById(id));
+    }
+
+
 }

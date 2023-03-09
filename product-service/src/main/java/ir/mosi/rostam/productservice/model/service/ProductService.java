@@ -10,4 +10,6 @@ public interface ProductService {
     Product save(Product product);
 
     Optional<Product> findById(Long id);
+
+    List<Product> findByIdIn(List<Long> ids);
 }

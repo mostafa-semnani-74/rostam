@@ -7,8 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -28,6 +31,14 @@ public class ProductController {
             return ResponseEntity.ok(productOpt.get());
         else
             throw new RuntimeException("product not found with id : " + id);
+    }
+
+    @GetMapping("/findByIds/{ids}")
+    public ResponseEntity<List<Product>> findByIds(@PathVariable String ids) {
+        return ResponseEntity.ok(productService.findByIdIn(
+                Arrays.stream(ids.split(","))
+                        .map(Long::parseLong)
+                        .collect(Collectors.toList())));
     }
 
     @PostMapping("/save")
