@@ -1,0 +1,64 @@
+2023-03-19 13:52:20.558  INFO 13552 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:9296
+2023-03-19 13:52:22.091  INFO 13552 --- [main] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=order-service, profiles=[default], label=null, version=5e2280348edc8cc794aa820062fd6380a9f93aa7, state=null
+2023-03-19 13:52:22.092  INFO 13552 --- [main] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/mostafa-semnani-74/config-server.git/application.yml'}]
+2023-03-19 13:52:22.102  INFO 13552 --- [main] i.m.r.o.OrderServiceApplication          : No active profile set, falling back to 1 default profile: "default"
+2023-03-19 13:52:22.762  INFO 13552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-03-19 13:52:22.815  INFO 13552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 2 JPA repository interfaces.
+2023-03-19 13:52:23.030  INFO 13552 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=26d3c22e-7e03-3103-862c-e9fbcdb88d52
+2023-03-19 13:52:23.229  INFO 13552 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-03-19 13:52:23.233  INFO 13552 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-03-19 13:52:23.236  INFO 13552 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-03-19 13:52:23.480  INFO 13552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9002 (http)
+2023-03-19 13:52:23.486  INFO 13552 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-03-19 13:52:23.486  INFO 13552 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-03-19 13:52:23.633  INFO 13552 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-03-19 13:52:23.633  INFO 13552 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1521 ms
+2023-03-19 13:52:24.008  INFO 13552 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-03-19 13:52:24.092  INFO 13552 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-03-19 13:52:24.123  INFO 13552 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-03-19 13:52:24.153  INFO 13552 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-03-19 13:52:24.248  INFO 13552 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-03-19 13:52:24.321  INFO 13552 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-03-19 13:52:24.743  INFO 13552 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-03-19 13:52:24.750  INFO 13552 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-03-19 13:52:25.370  WARN 13552 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-03-19 13:52:27.769  INFO 13552 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2023-03-19 13:52:27.881  WARN 13552 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2023-03-19 13:52:27.891  INFO 13552 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 25 endpoint(s) beneath base path '/actuator'
+2023-03-19 13:52:27.965  INFO 13552 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2023-03-19 13:52:27.995  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2023-03-19 13:52:28.000  INFO 13552 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2023-03-19 13:52:28.017  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2023-03-19 13:52:28.018  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2023-03-19 13:52:28.018  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2023-03-19 13:52:28.018  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2023-03-19 13:52:28.018  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2023-03-19 13:52:28.018  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2023-03-19 13:52:28.018  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2023-03-19 13:52:28.203  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2023-03-19 13:52:28.206  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2023-03-19 13:52:28.209  INFO 13552 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2023-03-19 13:52:28.214  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1679221348213 with initial instances count: 1
+2023-03-19 13:52:28.222  INFO 13552 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ORDER-SERVICE with eureka with status UP
+2023-03-19 13:52:28.223  INFO 13552 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1679221348223, current=UP, previous=STARTING]
+2023-03-19 13:52:28.225  INFO 13552 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ORDER-SERVICE/host.docker.internal:order-service:9002: registering service...
+2023-03-19 13:52:28.247  INFO 13552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9002 (http) with context path ''
+2023-03-19 13:52:28.248  INFO 13552 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9002
+2023-03-19 13:52:28.271  INFO 13552 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ORDER-SERVICE/host.docker.internal:order-service:9002 - registration status: 204
+2023-03-19 13:52:29.181  INFO 13552 --- [main] i.m.r.o.OrderServiceApplication          : Started OrderServiceApplication in 10.231 seconds (JVM running for 11.201)
+2023-03-19 13:52:29.979  INFO 13552 --- [RMI TCP Connection(1)-11.12.234.192] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-19 13:52:29.979  INFO 13552 --- [RMI TCP Connection(1)-11.12.234.192] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-03-19 13:52:29.981  INFO 13552 --- [RMI TCP Connection(1)-11.12.234.192] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-03-19 13:53:10.067  INFO 13552 --- [http-nio-9002-exec-3] i.m.r.o.m.service.impl.OrderServiceImpl  : product-service find by ids result is : productVO id : 1 , name : ae86
+2023-03-19 13:54:12.443  INFO 13552 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ORDER-SERVICE with eureka with status DOWN
+2023-03-19 13:54:12.443  INFO 13552 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1679221452443, current=DOWN, previous=UP]
+2023-03-19 13:54:12.443  INFO 13552 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ORDER-SERVICE/host.docker.internal:order-service:9002: registering service...
+2023-03-19 13:54:12.460  INFO 13552 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ORDER-SERVICE/host.docker.internal:order-service:9002 - registration status: 204
+2023-03-19 13:54:14.863  INFO 13552 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-03-19 13:54:14.863  INFO 13552 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-03-19 13:54:14.871  INFO 13552 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-03-19 13:54:14.874  INFO 13552 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-03-19 13:54:14.875  INFO 13552 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2023-03-19 13:54:17.883  INFO 13552 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2023-03-19 13:54:17.901  INFO 13552 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ORDER-SERVICE/host.docker.internal:order-service:9002 - deregister  status: 200
+2023-03-19 13:54:17.905  INFO 13552 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient

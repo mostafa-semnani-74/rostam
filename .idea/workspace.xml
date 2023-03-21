@@ -5,33 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2697e9cd-3027-4a3d-a1f1-3b58ffafaa62" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-config-server/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-config-server/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-config-server/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-config-server/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-config-server/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-config-server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-config-server/src/main/java/ir/mosi/rostam/cloudconfigserver/CloudConfigServerApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-config-server/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-config-server/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-config-server/src/test/java/ir/mosi/rostam/cloudconfigserver/CloudConfigServerApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/src/main/java/ir/mosi/rostam/orderservice/config/RabbitMQConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/src/main/java/ir/mosi/rostam/orderservice/messaging/message/CustomMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/ir/mosi/rostam/productservice/config/RabbitMQConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/ir/mosi/rostam/productservice/messaging/MessageListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/ir/mosi/rostam/productservice/messaging/message/CustomMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discovery-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discovery-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/ir/mosi/rostam/orderservice/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/ir/mosi/rostam/orderservice/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,13 +62,13 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "D:/programming/MyWorkSpace/MyProjects/rostam/discovery-server/src/main/resources",
+    "last_opened_file_path": "D:/programming/MyWorkSpace/MyProjects/rostam/product-service/src/main/java/ir/mosi/rostam/productservice",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "preferences.lookFeel",
-    "spring.configuration.checksum": "2c550acda54b21a84075d0ae7e1799fd",
+    "spring.configuration.checksum": "3367cf4a39a6832c873ab10562ea917a",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -94,12 +77,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\programming\MyWorkSpace\MyProjects\rostam\product-service\src\main\java\ir\mosi\rostam\productservice" />
       <recent name="D:\programming\MyWorkSpace\MyProjects\rostam\discovery-server\src\main\resources" />
       <recent name="D:\programming\MyWorkSpace\MyProjects\rostam\cloud-config-server\src\main\resources" />
       <recent name="D:\programming\MyWorkSpace\MyProjects\rostam\api-gateway\src\main\resources" />
       <recent name="D:\programming\MyWorkSpace\MyProjects\rostam\product-service\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ir.mosi.rostam.productservice.config" />
       <recent name="ir.mosi.rostam.orderservice.model.entity" />
       <recent name="ir.mosi.rostam.orderservice.model.vo" />
     </key>
@@ -147,6 +132,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.ApiGatewayApplication" />
+      <item itemvalue="Spring Boot.ProductServiceApplication" />
+      <item itemvalue="Spring Boot.CloudConfigServerApplication" />
+      <item itemvalue="Spring Boot.DiscoveryServerApplication" />
+      <item itemvalue="Spring Boot.OrderServiceApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -166,6 +158,15 @@
       <workItem from="1678345212548" duration="3144000" />
       <workItem from="1678354015009" duration="4346000" />
       <workItem from="1679117813233" duration="2663000" />
+      <workItem from="1679126509955" duration="3241000" />
+      <workItem from="1679141183080" duration="1025000" />
+      <workItem from="1679214100200" duration="1710000" />
+      <workItem from="1679221250721" duration="1223000" />
+      <workItem from="1679226942403" duration="402000" />
+      <workItem from="1679290226847" duration="16000" />
+      <workItem from="1679382131671" duration="160000" />
+      <workItem from="1679383897428" duration="486000" />
+      <workItem from="1679390834714" duration="2933000" />
     </task>
     <servers />
   </component>
